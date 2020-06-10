@@ -1,4 +1,4 @@
-# Final Project: Belay 
+# Messaging App 
 
 Isabella Lee
 
