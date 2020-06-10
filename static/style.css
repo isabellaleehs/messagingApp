@@ -1,0 +1,106 @@
+body {
+	background-color: #F9F9F9 !important;
+	font-family: Archivo Narrow, Arial !important;
+	padding-bottom: 0px;
+	height:100%;
+} 
+
+#clear-storage {
+	margin-top: 5px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+#title-block {
+	padding-bottom: 10px;
+}
+
+#create-chat {
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.badge {
+	display: inline-block; 
+	margin-right: 5px;
+}
+
+.create-chat-container {
+	background-color: black !important;
+}
+
+.new-chat-logistics {
+	padding-bottom: 10px;
+}
+
+.navbar {
+	border-radius: 5px;
+}
+
+.wrap-div {
+	white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+    white-space: -webkit-pre-wrap;          /* Chrome & Safari */ 
+    white-space: -pre-wrap;                 /* Opera 4-6 */
+    white-space: -o-pre-wrap;               /* Opera 7 */
+    white-space: pre-wrap;                  /* CSS3 */
+    word-wrap: break-word;                  /* Internet Explorer 5.5+ */
+    word-break: break-all;
+    white-space: normal;
+}
+
+#send_message {
+	left: 100px;
+}
+
+#clear {
+    display: inline;
+}
+
+.one_message {
+	padding: 2px;
+}
+
+.btn {
+	margin-right: 10px; 
+	padding-top: 1px;
+	padding-bottom: 1px;
+}
+
+.reply-button {
+	margin-top: 1px;
+	margin-bottom: 1px;
+}
+
+.message-footer {
+	position: sticky;  
+	bottom: 0px;
+	width: 100%;
+}
+
+/* Center the loader */
+#loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border: 12px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 100px;
+  height: 100px;
+  -webkit-animation: spin 3s linear infinite;
+  animation: spin 3s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

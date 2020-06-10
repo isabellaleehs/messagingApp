@@ -1,0 +1,259 @@
+<!-- 
+- https://mdbootstrap.com/docs/jquery/modals/forms/
+--> 
+
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Belay</title>
+
+  <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <!-- Add icon library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Font library -->
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Merriweather'>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Archivo+Narrow:400,400i,500,500i,600,600i,700,700i">
+
+  <!-- My CSS -->
+  <link rel="stylesheet" type="text/css" href="/static/style.css"></link>
+
+</head>
+
+<body onload="splash()" style="margin:0;">
+
+  <div id="loader"></div>
+
+  <!-- UNREAD MESSAGES NOTIFICATION -->
+  <div class="container-fluid notification-banner position-relative w-100 d-flex flex-column p-4">
+    <div class="toast ml-auto" role="alert" data-delay="700" data-autohide="false">
+      <div class="toast-body">
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="btn" id="toast-body-text" onclick="viewNewMessages()">
+          <!-- # new messages, click to view. -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- START OF MODALS -->
+  <!-- Sign up/Login modal -->
+  <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h4 class="modal-title w-100 font-weight-bold">Sign up/Login</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body mx-3">
+          <form id="signup_form">
+            <div class="form-group">
+              <p>If you're logging back in, use the same username, email and password.</p>
+              <label for="recipient-name" class="col-form-label">Your username</label>
+              <input type="text" class="form-control" name="username" autocomplete="off" placeholder= "Type a username" required>
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Your email</label>
+              <input type="text" class="form-control" name="email" autocomplete="off" placeholder= "Type your email address" required">
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Your password</label>
+              <input type="text" class="form-control" name="password" autocomplete="off" placeholder= "Type a password" required>
+            </div>
+            <p id="emptyfield" style="visibility: hidden">Please fill in all fields.</p>
+            <a href="" id="forgot_password">Forgot password</a>
+          </form>
+          <div class="modal-footer d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary" id="signup">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Password reset email entry modal -->
+  <div class="modal fade" id="modalPasswordResetForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h4 class="modal-title w-100 font-weight-bold">Password Reset</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body mx-3">
+          <form id="passwordResetForm">
+            <div class="form-group">
+              <p>Enter a valid email address associated with your account to send your reset password link to:</p>
+              <label for="message-text" class="col-form-label">Email</label>
+              <input type="text" class="form-control" name="email" autocomplete="off" placeholder= "Type a valid email address" required="required">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+          <button type="submit" class="btn btn-primary" id="passwordResetSubmit">Done</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Password reset modal -->
+  <div class="modal fade" id="modalPasswordResetFormFinal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h4 class="modal-title w-100 font-weight-bold">Password Reset</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body mx-3">
+          <form id="passwordResetFormFinal">
+            <div class="form-group">
+              <p>Enter a new password below:</p>
+              <label for="message-text" class="col-form-label">Password</label>
+              <input type="text" class="form-control" name="password" autocomplete="off" placeholder= "Type a new password" required="required">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+          <button type="submit" class="btn btn-primary" id="passwordResetSubmitFinal">Done</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Change username/email modal -->
+  <div class="modal fade" id="modalVariableChangeForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h4 class="modal-title w-100 font-weight-bold" id="change-variable"></h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body mx-3">
+          <form id="variableChangeForm">
+            <div class="form-group">
+              <label for="message-text" class="col-form-label" id="change-variable-label"></label>
+              <input type="text" class="form-control" name="variable" autocomplete="off" required="required">
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Password</label>
+              <input type="text" class="form-control" name="password" autocomplete="off" required="required">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+          <button type="submit" class="btn btn-primary" id="changeVariableSubmit">Done</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- END OF MODALS -->
+
+  <!-- START OF CHANNELS AND MESSAGES -->
+  <!-- Chat list Navbar + Create a new chat on top -->
+  <div class="container-fluid mt-4 ml-2 mr-2" id="create-chat-container">
+    <div class="row">
+      <div class="col-md-2 border-right">
+        <div class="wrap-div">
+          <h1 id="title-block">Belay</h1>
+          <a href="" id="change-username"><h6 id="welcome-username"></h6></a>
+          <a href="" id="change-email"><h6 id="welcome-email"></h6></a>
+          <p>Not you? <button class="btn btn-dark" type="button" id="login-button"> Login/Sign up </button></p>
+        </div>
+        <div class="new-chat-logistics">
+          <form action="" id="create_chat_form" method="POST" accept-charset="UTF-8" target="_blank">
+            <input type="hidden" class="username" name="username" id="username"/>
+            <input type="submit" class="btn btn-dark" id="create-chat" value="create chat"/>
+          </form> 
+          <input type="submit" class="btn btn-dark" id="clear-storage" value="clear localStorage"/> <br><p id="clear">...recommended if you've run this app on this browser before</p>
+        </div>
+
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topnavbar" aria-controls="topnavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div id="topnavbar" class="collapse navbar-collapse">
+            <ul id="menu-main-menu" class="navbar-nav flex-column channel_list wrap-div">
+            </ul>
+          </div>
+        </nav>
+      </div>
+
+      <div class="col-md-10">
+        <!-- Chat box - get and post messages here -->
+        <div class="d-flex flex-row flex-fill mt-4 ml-2 big-chat-container">
+          <div class="chat-container col-md-7 hidden-xs-down" id="chat-container">
+            <h3 class="channel_name" id="channel_name"></h3>
+            <div class='delete-chat' id="delete-chat"></div>
+            <h5 class="message-filler">Messages appear below...</h5>
+
+            <div class="message_holder" id="message_holder">
+            </div>
+
+            <div class="message-footer">
+              <div class="form-group form-group-lg mt-4">
+                <form class="mb-4" action="" method="POST" id="send_message" accept-charset="UTF-8">   
+                  <input type="text" class="col-xs-12" id="message" name="body" autocomplete="off" placeholder="Type a message" required/>
+                  <input type="hidden" id="replies_to" name="replies_to" value="">
+                  <input type="submit"/>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <div class="container flex-row flex-fill col-xs-12" id="reply-container">
+            <button type="button" class="btn btn-secondary btn-sm" id="return-to-chat" onClick="return_click()">Return to channel</button>
+            <h3 id="reply_message">Reply to a message...</h3>
+
+            <div id="reply_message_holder_root">
+              <!-- copy div reply -->
+            </div>
+
+            <div id="reply_message_holder">
+              <!-- replies -->
+            </div>
+
+            <div class="message-footer">
+              <div class="form-group form-group-lg mt-4">
+                <form class="mb-4" action="" method="POST" id="send_reply" accept-charset="UTF-8">
+                  <input type="text" class="col-xs-12" id="message-replies" name="body" autocomplete="off" placeholder="Type a message" required/>
+                  <input type="hidden" id="reply_replies_to" name="replies_to" value="">
+                  <input type="submit"/>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- END OF CHANNELS/MESSAGES -->
+
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="/static/script.js"></script>
+</body>
+</html>
